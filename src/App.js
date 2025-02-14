@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { ThemeProvider } from './ThemeContext'
 import Post from './Post';
 import Header from './Header';
 
@@ -28,10 +29,13 @@ function App() {
   }
 
   return (
-    <>
+    <ThemeProvider>
       <Header title="JStack's Blog">
-        <h2>Posts da semana</h2>
-        <button onClick={handleRefresh}>Atualizar</button>
+        <h2>Posts da semana
+          <button onClick={handleRefresh}>
+            Atualizar
+          </button>
+        </h2>
       </Header>
 
       <hr />
@@ -43,7 +47,7 @@ function App() {
           post={post}
         />
       )))}
-    </>
+    </ThemeProvider>
   );
 }
 
