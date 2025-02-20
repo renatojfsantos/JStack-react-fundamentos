@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
-import { ThemeProvider } from './ThemeContext'
 import Post from './Post';
 import Header from './Header';
+import styles from './App.scss';
+
+import { ThemeProvider } from './ThemeContext'
 
 function App() {
   const [ posts, setPosts ] = useState([
-    { id:Math.random(), title: "Título #01", subtitle:"Subtítulo #01", likes: 20, read: false },
-    { id:Math.random(), title: "Título #02", subtitle:"Subtítulo #02", likes: 10, read: true },
-    { id:Math.random(), title: "Título #03", subtitle:"Subtítulo #03", likes: 50, read: false },
-    { id:Math.random(), title: "Título #04", subtitle:"Subtítulo #03", likes: 50, read: true },
+    { id:Math.random(), title: "Título #01", subtitle:"Subtítulo #01", likes: 20, read: false, removed: false },
+    { id:Math.random(), title: "Título #02", subtitle:"Subtítulo #02", likes: 10, read: true, removed: false },
+    { id:Math.random(), title: "Título #03", subtitle:"Subtítulo #03", likes: 50, read: false, removed: false },
+    { id:Math.random(), title: "Título #04", subtitle:"Subtítulo #03", likes: 50, read: true, removed: false },
   ]);
 
   function handleRefresh() {
@@ -21,21 +23,27 @@ function App() {
         subtitle: `Subtítulo #0${prevState.length + 1}`,
         likes: 50,
         read: false,
+        removed: false,
       }
     ]);
   }
 
   function handleRemovePost(postId) {
-    setPosts((prevState) => prevState.filter(post => post.id !== postId));
+    setPosts((prevState) => prevState.map(
+      post => (
+        post.id === postId
+          ? { ...post, removed: true }
+          : post
+      )
+    ));
   }
 
   return (
     <ThemeProvider>
       <Header title="JStack's Blog">
-        <h2>Posts da semana
-          <button onClick={handleRefresh}>
-            Atualizar
-          </button>
+        <h2 className={styles.title}>
+          Posts da semana
+          <button onClick={handleRefresh}>Atualizar</button>
         </h2>
       </Header>
 
