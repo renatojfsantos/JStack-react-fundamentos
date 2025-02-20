@@ -7,7 +7,13 @@ import { Subtitle, Rate } from './styles'
 
 export default function Post(props) {
   return (
-    <article>
+    <article
+      // className={
+      //   props.post.removed
+      //     ? styles.postDeleted
+      //     : styles.post
+      // }
+    >
       <PostHeader
         onRemove={props.onRemove}
         post={{

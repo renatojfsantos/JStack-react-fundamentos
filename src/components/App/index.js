@@ -4,7 +4,7 @@ import Post from '../Post';
 import Header from '../Header';
 import { ThemeProvider } from '../../context/ThemeContext';
 
-import styles from './App.scss';
+import { Title } from './styles';
 
 
 function App() {
@@ -42,10 +42,10 @@ function App() {
   return (
     <ThemeProvider>
       <Header title="JStack's Blog">
-        <h2>
+        <Title as="h2">
           Posts da semana
           <button onClick={handleRefresh}>Atualizar</button>
-        </h2>
+        </Title>
       </Header>
 
       <hr />
