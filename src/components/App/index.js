@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-import Post from './Post';
-import Header from './Header';
+import Post from '../Post';
+import Header from '../Header';
+import { ThemeProvider } from '../../context/ThemeContext';
+
 import styles from './App.scss';
 
-import { ThemeProvider } from './ThemeContext'
 
 function App() {
   const [ posts, setPosts ] = useState([
@@ -41,7 +42,7 @@ function App() {
   return (
     <ThemeProvider>
       <Header title="JStack's Blog">
-        <h2 className={styles.title}>
+        <h2>
           Posts da semana
           <button onClick={handleRefresh}>Atualizar</button>
         </h2>
