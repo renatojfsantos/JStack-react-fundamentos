@@ -5,9 +5,9 @@ export const Container = styled.header`
   height: 100px;
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  border-radius: 10px;
   justify-content: space-between;
+  padding: 0 ${({ theme }) => theme.spacing.large}px;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   button {
     font-size: 16px;
